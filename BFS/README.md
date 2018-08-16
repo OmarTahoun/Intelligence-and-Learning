@@ -1,9 +1,9 @@
 # BREDTH-FIRST-SEARCH
 ## This is an implmentation of the bredth first search algorithm.
 
-+ #### The Problem here is to find the connection (path) between actors in different movies and kevin bacon.
++ #### The Problem here is to find the path (connection) between different actors and kevin bacon.
 + #### Movies and Actors are represented as nodes and are connected through edges.
-+ #### Then with a sepicific start the BFS algorithm is performed.
++ #### Then with a sepicific start point (actor's name) the BFS algorithm is performed.
 
 ### The algorithm:
 ```
