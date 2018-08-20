@@ -2,10 +2,10 @@ function Cell(row,col) {
   this.row = row;
   this.col = col;
 
-  this.top = false;
-  this.right = false;
-  this.bottom = false;
-  this.left = false;
+  this.top = true;
+  this.right = true;
+  this.bottom = true;
+  this.left = true;
 }
 Cell.prototype.show = function () {
   var x = this.row*s;
