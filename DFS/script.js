@@ -1,27 +1,40 @@
-function Cell(row,col) {
-  this.row = row;
-  this.col = col;
+// GETTING THE INDEX OF THE NEIGHBOR
+var getIndex = function (col,row) {
+  if(row<0 || col<0 || row>rows-1 || col>cols-1){
+    return -1;
+  }
+  return col + row * cols;
+};
 
-  this.top = true;
-  this.right = true;
-  this.bottom = true;
-  this.left = true;
-}
-Cell.prototype.show = function () {
-  var x = this.row*s;
-  var y = this.col*s;
+// CHECKS IF THE NEIGHBOR IS AVAILABLE AND NOT VISITED
+var getNeighbors = function (cells) {
+  var available = [];
+  for (var i = 0; i < cells.length; i++) {
+    if(cells[i] && !cells[i].visited){
+      available.push(cells[i]);
+    }
+  }
+  return available;
+};
 
-  stroke(140,80,0);
-  if(this.top){
-    line(x,y, x+s,y);
+// REMOVES THE WALLS BETWEEN THE CURRENT AND THE NEXT CELL
+removeWalls = function (current, neighbor) { 
+  var x = current.row-neighbor.row;
+  var y = current.col - neighbor.col;
+
+  if(x === 1){
+    current.left = false;
+    neighbor.right = false;
+  }else if(x === -1){
+    current.right = false;
+    neighbor.left = false;
   }
-  if(this.right){
-    line(x+s,y, x+s,y+s);
+  if(y === 1){
+    current.top = false;
+    neighbor.bottom = false;
+  }else if(y === -1){
+    current.bottom = false;
+    neighbor.top = false;
   }
-  if(this.bottom){
-    line(x+s,y+s, x, y+s);
-  }
-  if(this.left){
-    line(x,y+s, x,y);
-  }
+
 };
